@@ -1,5 +1,5 @@
 #A simple chatbot based on aiml files
-##Libraries needed:
-- speech_recognition
-- aiml
-- google_speech
+##Dependencies:
+- speech_recognition (https://pypi.python.org/pypi/google_speech/)
+- python-aiml
+- google_speech (https://pypi.python.org/pypi/SpeechRecognition/)
