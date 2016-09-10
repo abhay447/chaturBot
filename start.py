@@ -82,7 +82,10 @@ while True:
 	elif message == "save":
 		kernel.saveBrain("bot_brain.brn")
 	else:
-		bot_response = kernel.respond(message)        
+		if message == "TextNotRecognized":
+			bot_response = "I couldn't understand what you just said"
+		else:
+			bot_response = kernel.respond(message)        
 		print bot_response
         subprocess.call(['google_speech','-l','en', '"%s"'%bot_response])
         # Do something with bot_response
