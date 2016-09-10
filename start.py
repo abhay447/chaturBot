@@ -1,6 +1,7 @@
 import aiml
 import os
-
+import subprocess
+from speech_rec import speak
 # Create the kernel and learn AIML files
 kernel = aiml.Kernel()
 #if os.path.isfile("bot_brain.brn"):
@@ -75,12 +76,13 @@ kernel.setBotPredicate("state","Vanuatu")
 
 # Press CTRL-C to break this loop
 while True:
-	message = raw_input("Enter your message >> ")
+	message = speak() #raw_input("Enter your message >> ")
 	if message == "quit":
 		exit()
 	elif message == "save":
 		kernel.saveBrain("bot_brain.brn")
 	else:
-		bot_response = kernel.respond(message)
+		bot_response = kernel.respond(message)        
 		print bot_response
+        subprocess.call(['google_speech','-l','en', '"%s"'%bot_response])
         # Do something with bot_response
